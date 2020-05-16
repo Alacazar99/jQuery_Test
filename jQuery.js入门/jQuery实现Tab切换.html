@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>切换</title>
+	<script type="text/javascript" src="jQuery.min.js"></script>
+	<style type="text/css">
+		.xiaoguo{
+			background-color: #999;
+			/*padding: 1px;*/
+			/*margin: 30px;*/
+			/*background: gray;*/
+		}
+		.xiaoguo li{
+			background-color: #dcdcdc;
+			float: left;
+			width: 100px;
+			/*margin: 3px;*/
+			list-style: none;
+			cursor: pointer;
+			text-align: center;
+			margin-left: 3px;
+			border: 1px  solid #aaa;
+		}
+		.xiaoguo .current{
+			background-color: pink;
+			display = 'block';
+		}
+		.tab_con{
+			width: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div class="tab_list">
+		<div  class="xiaoguo" id="hsx">
+			<li class="current">商品介绍</li>
+			<li>规格包装</li>
+			<li>售后保障</li>
+			<li>商品评价</li>
+			<li>商品社区</li>
+		</div>
+	<div class="tab_con">
+		<div class="item" style="display: block;">
+			商品介绍
+		</div>
+		<div class="item" style="display: none;">
+			规格
+		</div>
+		<div class="item" style="display: none;">
+			售后保障
+		</div>
+		<div class="item" style="display: none;">
+			商品评价(500+)
+		</div> 
+		<div class="item" style="display: none;">
+			商品社区
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$('.xiaoguo li').click(function(){
+			// 链式编程操作；
+			$(this).addClass('current').siblings().removeClass('current');
+			var index = $(this).index();
+			console.log(index);
+			// 显示相应的item，其余隐藏；
+			$('.tab_con .item').eq(index).show().siblings().hide();
+		})
+
+	</script>
+</body>
+</html>

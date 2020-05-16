@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="jQuery.min.js"></script>
+	<style type="text/css">
+		.wrapper{
+			position: absolute;
+			width: 360px;
+			height: 200px;
+			/*background-color: pink;*/
+			margin: 10px auto;
+			/*padding: 2px;*/
+		}
+		.wrapper div{
+			width: 100px;
+			height: 100px;
+			float: left;
+			padding: 5px;
+			background-color: red;
+			border: 3px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<button>淡入</button>
+	<button>淡出</button>
+	<button>切换</button>
+	<button>修改透明度</button>
+	<button>运动起来</button>
+	<div class="wrapper">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	
+
+	<script type="text/javascript">
+		$(function(){
+			
+			$('button').eq(0).click(function(){
+				$('.wrapper').fadeIn(1000,function(){
+					// alert("淡入");
+				})
+			})
+			$('button').eq(1).click(function(){
+				$('.wrapper').fadeOut(1000,function(){
+					// alert('显示');
+				})
+			})
+			$('button').eq(2).click(function(){
+				$('.wrapper').fadeToggle(1500,function(){
+					// alert(123);
+				})
+			})
+			$('button').eq(3).click(function(){
+				$('.wrapper').fadeTo(1500,0.5,function(){
+					// alert(123);
+				})
+			})
+			// 透明度修改
+			$(".wrapper div").hover(function(){
+				$(this).siblings().stop().fadeTo(400,0.5);  // 鼠标进入，透明度修改；
+			},function(){
+				$(this).siblings().stop().fadeTo(500,1);
+			})
+			$('button').eq(4).click(function(){
+				$(".wrapper").animate({
+					left:20,
+					top:10,
+					opacity: .5
+
+				},1000);
+			})
+		})
+	</script>
+</body>
+</html>

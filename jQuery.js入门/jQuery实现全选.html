@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表格变色</title>
+	<script type="text/javascript" src="jQuery.min.js"></script>
+	<style type="text/css">
+		.table{
+			width: 500px;
+			margin: 100px auto;
+			border-collapse: collapse;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+		<table border="2">
+			<thead>
+				<tr>
+			      <th>
+			      	全选 <input type="checkbox" class="checkall" name="">
+			      </th>
+			      <th>商品</th>
+			      <th>价钱</th>
+
+			    </tr>
+			</thead>
+			<tbody  id="check">
+				<tr >
+					<th><input type="checkbox" name="" class="checks"></th>
+					<th>苹果</th>
+					<th>$1.23</th>
+				</tr>
+				<tr >
+					<th><input type="checkbox" name="" class="checks"></th>
+					<td>梨</td>
+					<td>￥9.99</td>
+				</tr>
+				<tr >
+					<th><input type="checkbox" name="" class="checks"></th>
+					<td>香蕉</td>
+					<td>￥5.20</td>
+				</tr>
+				<tr >
+					<th><input type="checkbox" name="" class="checks"></th>
+					<td>车厘子</td>
+					<td>￥52.00</td>
+				</tr>
+			</tbody>
+			<th>
+			    全选 <input type="checkbox" class="checkall" name="">
+			</th>
+			<th>总计：</th>
+			<th></th>
+		</table>
+
+	<script type="text/javascript">
+		$(function(){
+			$(".checkall").change(function(){
+				// console.log($(this).prop("checked"));
+				$(".checks, .checkall").prop("checked",$(this).prop("checked"));
+			})
+			// 小按钮复选框全选，则全选按钮选中；
+			$(".checks").change(function(){
+				// console.log($(".checks:checked").length);
+				if($(".checks:checked").length == 4){
+					$(".checkall").prop("checked",true);
+				}else{
+					$(".checkall").prop("checked",false);
+				}
+			})
+			
+		})
+	</script>
+</body>
+</html>

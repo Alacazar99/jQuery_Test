@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="jQuery.min.js"></script>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 20px;
+			background-color: pink;
+			margin: 10px;
+			/*padding: 2px;*/
+		}
+	</style>
+</head>
+<body>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<div></div>
+	<div class="div2"></div>
+	<div></div>
+	<ul>
+		<li class="1"></li>
+		<li class="2"></li>
+		<li class="3"></li>
+		<li class="4"></li>
+		<li class="5"></li>
+	</ul>
+	<script type="text/javascript">
+		// 隐式迭代
+		$('div').css('background-color',"red");
+		// $(document).ready(function({
+		// 	$('div').hide();
+		// })
+		// // 2、页面加载后执行js代码；
+		// $(function(){
+		// 	$('div').hide();
+		// })
+		// console.log($('.div2'));
+		// console.log($('div'));
+		// 筛选 选择器；
+		$(function(){
+			$('ul li:first').css('background-color','red');
+			$('ul li:eq(3)').css('background-color','yellow');
+			$('ul li').eq(4).css('background-color','pink');  // 推荐；
+			// 返回父集；
+			console.log($('li').parent());
+			$('li').parent().css('background-color','#eee');
+			$('.div2').siblings('div').css('background-color','green');
+			// 
+			$('button').click(function(){
+				// 当前元素变化背景颜色；
+				$(this).css('background-color','red');
+				// 其余 兄弟元素去掉颜色；
+				$(this).siblings('button').css('background-color','pink');
+			})
+
+
+		})
+	</script>
+</body>
+</html>

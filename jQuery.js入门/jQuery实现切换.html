@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="jQuery.min.js"></script>
+	<style type="text/css">
+		.wrapper{
+			width: 300px;
+			height: 250px;
+			background-color: pink;
+			margin: 10px auto;
+			/*padding: 2px;*/
+		}
+		.left{
+			float: left;
+			width: 60px;
+			list-style: none;
+		}
+		.left li{
+			height: 45px;
+			list-style: none;
+			text-underline: none;
+			/*border: 2px solid red;*/
+		}
+		#content{
+			width: 200px;
+			height: 250px;
+			/*position: relative;*/
+			float: right;
+		}
+		#content div{
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<button>切换</button>
+	<div class="wrapper">
+		<ul class="left">
+			<li><a href="#">图一</a></li>
+			<li><a href="#">图二</a></li>
+			<li><a href="#">图三</a></li>
+			<li><a href="#">图四</a></li>
+			<li><a href="#">图五</a></li>
+
+		</ul>
+		<div id="content">
+			<div>
+				<a href="#"><img src="img/1.jpg" width="200" height="250"></a>
+			</div>
+			<div>
+				<a href="#"><img src="img/2.jpg" width="200" height="250"></a>
+			</div>
+			<div>
+				<a href="#"><img src="img/3.jpg" width="200" height="250"></a>
+			</div>
+			<div>
+				<a href="#"><img src="img/4.jpg" width="200" height="250"></a>
+			</div>
+			<div>
+				<a href="#"><img src="img/5.jpg" width="200" height="250"></a>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		$(function(){
+			// 1
+			$('.left li').mouseover(function(){
+				var index = $(this).index();
+				// console.log(index);
+				// 对应索引的元素显示
+				$('#content div').eq(index).show();
+				// $('.left li').eq(index).css('background-color','#ccc');
+				// 其余元素隐藏；
+				$('#content div').eq(index).siblings().hide();
+			})
+			// 2
+			// $('.left li').hover(function(){
+			// 	var index = $(this).index();
+			// 	// console.log(index);
+			// 	// 对应索引的元素显示
+			// 	$('#content div').eq(index).show();
+			// },function(){
+			// 	$('#content div').eq(index).siblings().hide();
+			// });
+
+
+			$('button').eq(1).click(function(){
+				$('.wrapper').slideUp(1000,function(){
+					// alert("隐藏");
+				})
+			})
+			$('button').eq(0).click(function(){
+				$('.wrapper').slideDown(1000,function(){
+					// alert('显示');
+				})
+			})
+			$('button').eq(2).click(function(){
+				$('.wrapper').slideToggle(100,function(){
+					// alert(123);
+				})
+			})
+		})
+	</script>
+</body>
+</html>
